@@ -5,9 +5,13 @@ const InitManger = require('./app/core/init')
 const catchError = require('./middlewares/exception')
 const app = new Koa()
 
-InitManger.initCore(app)
 // 全局错误处理
 app.use(catchError)
+
+InitManger.initCore(app)
+// app.on('error', (err, ctx) => {
+//   console.log('捕获到了!', err.message);
+// });
 app.use(async(ctx, next) => {
   console.log(1)
   await next()

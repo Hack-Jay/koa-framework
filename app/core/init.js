@@ -1,7 +1,6 @@
 const Router = require('koa-router')
 const requireDirectory = require('require-directory')
 
-
 class InitManger {
   static initCore(app) {
     InitManger.app = app

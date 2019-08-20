@@ -1,5 +1,6 @@
 const Router = require('koa-router')
 const router = new Router()
+const { HttpException } = require('../../core/http-exception')
 
 router.get('/book', (ctx, next) => {
   ctx.body = {
@@ -7,7 +8,8 @@ router.get('/book', (ctx, next) => {
     content: 'book'
   }
   // 在全局错误处理中被捕获
-  throw new Error('book exception .')
+  const error = new HttpException('something error...', 10001, 400)
+  throw error
 })
 
 module.exports = router
